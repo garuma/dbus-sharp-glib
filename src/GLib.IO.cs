@@ -35,7 +35,7 @@ namespace DBus.GLib
 		public IntPtr Handle;
 
 		[DllImport(GLIB)]
-			static extern IntPtr g_io_channel_unix_new (int fd);
+		static extern IntPtr g_io_channel_unix_new (int fd);
 
 		public IOChannel (int fd)
 		{
@@ -55,7 +55,7 @@ namespace DBus.GLib
 		}
 
 		[DllImport(GLIB)]
-			static extern int g_io_channel_unix_get_fd (IntPtr channel);
+		static extern int g_io_channel_unix_get_fd (IntPtr channel);
 
 		public int UnixFd
 		{
@@ -65,20 +65,20 @@ namespace DBus.GLib
 		}
 
 		[DllImport(GLIB)]
-			public static extern IntPtr g_io_channel_win32_new_fd (int fd);
+		public static extern IntPtr g_io_channel_win32_new_fd (int fd);
 
 		[DllImport(GLIB)]
-			public static extern IntPtr g_io_channel_win32_new_socket (int socket);
+		public static extern IntPtr g_io_channel_win32_new_socket (int socket);
 
 		[DllImport(GLIB)]
-			public static extern IntPtr g_io_channel_win32_new_messages (uint hwnd);
+		public static extern IntPtr g_io_channel_win32_new_messages (uint hwnd);
 
 
 		[DllImport(GLIB)]
-			public static extern uint g_io_channel_get_buffer_size (IntPtr channel);
+		public static extern uint g_io_channel_get_buffer_size (IntPtr channel);
 
 		[DllImport(GLIB)]
-			public static extern void g_io_channel_set_buffer_size (IntPtr channel, uint size);
+		public static extern void g_io_channel_set_buffer_size (IntPtr channel, uint size);
 
 		public uint BufferSize
 		{
@@ -97,18 +97,16 @@ namespace DBus.GLib
 
 		public bool Buffered
 		{
-			get
-			{
+			get {
 				return g_io_channel_get_buffered (Handle);
 			}
-			set
-			{
+			set {
 				g_io_channel_set_buffered (Handle, value);
 			}
 		}
 
 		[DllImport(GLIB)]
-			public static extern IOCondition g_io_channel_get_buffer_condition (IntPtr channel);
+		public static extern IOCondition g_io_channel_get_buffer_condition (IntPtr channel);
 
 		public IOCondition BufferCondition
 		{
@@ -118,10 +116,10 @@ namespace DBus.GLib
 		}
 
 		[DllImport(GLIB)]
-			public static extern IOFlags g_io_channel_get_flags (IntPtr channel);
+		public static extern IOFlags g_io_channel_get_flags (IntPtr channel);
 
 		[DllImport(GLIB)]
-			static extern short g_io_channel_set_flags (IntPtr channel, IOFlags flags, IntPtr error);
+		static extern short g_io_channel_set_flags (IntPtr channel, IOFlags flags, IntPtr error);
 
 		public IOFlags Flags
 		{

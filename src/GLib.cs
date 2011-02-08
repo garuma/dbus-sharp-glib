@@ -4,6 +4,7 @@
 
 using System;
 using DBus;
+using DBus.Protocol;
 using DBus.GLib;
 using org.freedesktop.DBus;
 
@@ -29,7 +30,7 @@ namespace DBus
 		{
 			IOFunc dispatchHandler = delegate (IntPtr source, IOCondition condition, IntPtr data) {
 				if ((condition & IOCondition.Hup) == IOCondition.Hup) {
-					if (Protocol.Verbose)
+					if (ProtocolInformations.Verbose)
 						Console.Error.WriteLine ("Warning: Connection was probably hung up (" + condition + ")");
 
 					//TODO: handle disconnection properly, consider memory management
